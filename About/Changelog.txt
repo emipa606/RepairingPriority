@@ -1,5 +1,8 @@
 # Changelog for RepairingPriority
 
+1.5.2 - Added 1.4 version
+
+
 1.5.1 - Updated Chinese translation by Buyue-z
 
 
