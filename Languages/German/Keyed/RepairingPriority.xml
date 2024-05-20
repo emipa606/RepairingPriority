@@ -10,4 +10,6 @@
   <RepairingAreaFirst>Die Gebäude in diesem Gebiet werden zuerst repariert.</RepairingAreaFirst>
   <RepairingAreaLast>Die Gebäude in diesem Gebiet werden als letztes repariert.</RepairingAreaLast>
   <RepairingAreaMiddle>Die Gebäude in diesem Bereich werden nach den Gebäuden in {0} und vor den Gebäuden in {1} repariert.</RepairingAreaMiddle>
+  <AddAreaForPriorityRepairingFirst>Bereich zuerst hinzufügen</AddAreaForPriorityRepairingFirst>
+  <AddAreaForPriorityRepairingLast>Bereich hinzufügen Letzte</AddAreaForPriorityRepairingLast>
 </LanguageData>

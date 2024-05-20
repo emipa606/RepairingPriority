@@ -1,5 +1,9 @@
 # Changelog for RepairingPriority
 
+1.5.3 - Added button to add area at the bottom of the list
+Used DeepL to update translations for ChineseSimplified, French, German
+
+
 1.5.2 - Added 1.4 version
 
 

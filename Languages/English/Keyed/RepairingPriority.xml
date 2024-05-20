@@ -3,6 +3,8 @@
   <OpenRepairingPriorityDialog>Open repairing priorities window.\n\nHere you can set which areas colonists will repair buildings first, last or anything in between.</OpenRepairingPriorityDialog>
   <AddAreaAsRepairingArea>Click to add an area to prioritize for repairing.\n\nIf you are confused about which areas are prioritized, hover over each area in the list and read the tooltips.</AddAreaAsRepairingArea>
   <AddAreaForPriorityRepairing>Add Area</AddAreaForPriorityRepairing>
+  <AddAreaForPriorityRepairingFirst>Add Area First</AddAreaForPriorityRepairingFirst>
+  <AddAreaForPriorityRepairingLast>Add Area Last</AddAreaForPriorityRepairingLast>
   <AddAreaForPriorityRepairingTip>Add an area for colonists to clean.</AddAreaForPriorityRepairingTip>
   <RepairingAreaIsPrioritized>Repairing colonists will repair buildings in this area.\n\n</RepairingAreaIsPrioritized>
   <OnlyRepairingArea>Only buildings in this area will be repaired.</OnlyRepairingArea>

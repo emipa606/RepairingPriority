@@ -12,6 +12,7 @@ internal class Dialog_RepairingPriority : Window
     private const float elementHeight = 24f;
     private const float buttonHeight = 30f;
     private readonly HashSet<Area> addQueue = [];
+    private readonly HashSet<Area> insertQueue = [];
     private readonly Map map;
 
     private readonly HashSet<Area> removeQueue = [];
@@ -34,6 +35,12 @@ internal class Dialog_RepairingPriority : Window
         {
             manager.AddAreaRange(addQueue);
             addQueue.Clear();
+        }
+
+        if (insertQueue.Any())
+        {
+            manager.AddAreaRange(insertQueue, true);
+            insertQueue.Clear();
         }
 
         if (removeQueue.Any())
@@ -89,24 +96,41 @@ internal class Dialog_RepairingPriority : Window
         var buttonRect = new Rect(listHolderRect.x,
             listHolderRect.y + listHolderRect.height + marginBetweenElements, listHolderRect.width, buttonHeight);
         TooltipHandler.TipRegion(buttonRect, "AddAreaForPriorityRepairingTip".Translate());
-        if (!Widgets.ButtonText(buttonRect, "AddAreaForPriorityRepairing".Translate()))
+        if (Widgets.ButtonText(buttonRect.LeftHalf().ContractedBy(1f), "AddAreaForPriorityRepairingFirst".Translate()))
         {
-            return;
+            var menu = MakeAreasFloatMenu(addableAreas);
+            if (menu != null)
+            {
+                Find.WindowStack.Add(menu);
+            }
         }
 
-        var menu = MakeAreasFloatMenu(addableAreas);
-        if (menu != null)
+        if (Widgets.ButtonText(buttonRect.RightHalf().ContractedBy(1f), "AddAreaForPriorityRepairingLast".Translate()))
         {
-            Find.WindowStack.Add(menu);
+            var menu = MakeAreasFloatMenu(addableAreas, true);
+            if (menu != null)
+            {
+                Find.WindowStack.Add(menu);
+            }
         }
     }
 
-    private FloatMenu MakeAreasFloatMenu(IEnumerable<Area> addableAreas)
+    private FloatMenu MakeAreasFloatMenu(IEnumerable<Area> addableAreas, bool last = false)
     {
         var options = new List<FloatMenuOption>();
         foreach (var area in addableAreas)
         {
-            options.Add(new FloatMenuOption(area.Label, delegate { addQueue.Add(area); }));
+            options.Add(new FloatMenuOption(area.Label, delegate
+            {
+                if (last)
+                {
+                    addQueue.Add(area);
+                }
+                else
+                {
+                    insertQueue.Add(area);
+                }
+            }));
         }
 
         return options.Count > 0 ? new FloatMenu(options) : null;

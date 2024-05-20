@@ -109,11 +109,18 @@ internal class RepairManager_MapComponent : MapComponent, ICellBoolGiver
         priorityAreasDrawer.CellBoolDrawerUpdate();
     }
 
-    public void AddAreaRange(IEnumerable<Area> rangeToAdd)
+    public void AddAreaRange(IEnumerable<Area> rangeToAdd, bool insert = false)
     {
         foreach (var area in rangeToAdd)
         {
-            priorityList.Insert(0, area);
+            if (insert)
+            {
+                priorityList.Insert(0, area);
+            }
+            else
+            {
+                priorityList.Add(area);
+            }
         }
 
         MarkNeedToRecalculate();
