@@ -157,18 +157,36 @@ internal class RepairManager_MapComponent : MapComponent, ICellBoolGiver
     public IEnumerable<Thing> RepairableBuildingsInAnyArea()
     {
         var potentialBuildings = map.listerBuildingsRepairable.RepairableBuildings(Faction.OfPlayer);
+
+        Log.Message($"{potentialBuildings.Count} can be repaired");
+        var brokenItems = map.GetComponent<BreakdownManager>()?.brokenDownThings;
+        if (brokenItems != null && brokenItems.Any())
+        {
+            potentialBuildings.AddRange(brokenItems);
+        }
+
         if (potentialBuildings == null || !potentialBuildings.Any())
         {
+            Log.Message($"{potentialBuildings} have no buildings");
             yield break;
         }
 
         var combinedAreas = new HashSet<IntVec3>(priorityList.SelectMany(area => area.ActiveCells));
         foreach (var building in potentialBuildings)
         {
-            if (building is { Spawned: true } &&
-                combinedAreas.Contains(building.Position) &&
-                CanRepair(building))
+            if (building is not { Spawned: true })
             {
+                continue;
+            }
+
+            if (!combinedAreas.Contains(building.Position))
+            {
+                continue;
+            }
+
+            if (CanRepair(building))
+            {
+                Log.Message($"Adding {building} to repairable list");
                 yield return building;
             }
         }
@@ -222,7 +240,8 @@ internal class RepairManager_MapComponent : MapComponent, ICellBoolGiver
 
     private static bool CanRepair(Thing building)
     {
-        if (building.MaxHitPoints <= building.HitPoints)
+        var breakdownable = building.TryGetComp<CompBreakdownable>();
+        if (building.MaxHitPoints <= building.HitPoints && breakdownable is not { BrokenDown: true })
         {
             return false;
         }

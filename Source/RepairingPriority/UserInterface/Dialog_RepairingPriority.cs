@@ -96,22 +96,25 @@ internal class Dialog_RepairingPriority : Window
         var buttonRect = new Rect(listHolderRect.x,
             listHolderRect.y + listHolderRect.height + marginBetweenElements, listHolderRect.width, buttonHeight);
         TooltipHandler.TipRegion(buttonRect, "AddAreaForPriorityRepairingTip".Translate());
+        FloatMenu menu;
         if (Widgets.ButtonText(buttonRect.LeftHalf().ContractedBy(1f), "AddAreaForPriorityRepairingFirst".Translate()))
         {
-            var menu = MakeAreasFloatMenu(addableAreas);
+            menu = MakeAreasFloatMenu(addableAreas);
             if (menu != null)
             {
                 Find.WindowStack.Add(menu);
             }
         }
 
-        if (Widgets.ButtonText(buttonRect.RightHalf().ContractedBy(1f), "AddAreaForPriorityRepairingLast".Translate()))
+        if (!Widgets.ButtonText(buttonRect.RightHalf().ContractedBy(1f), "AddAreaForPriorityRepairingLast".Translate()))
         {
-            var menu = MakeAreasFloatMenu(addableAreas, true);
-            if (menu != null)
-            {
-                Find.WindowStack.Add(menu);
-            }
+            return;
+        }
+
+        menu = MakeAreasFloatMenu(addableAreas, true);
+        if (menu != null)
+        {
+            Find.WindowStack.Add(menu);
         }
     }
 

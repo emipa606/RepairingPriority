@@ -2,7 +2,7 @@
 <ModSyncNinjaData>
   <ID>37a19a86-6463-4f78-8d41-51fc66f9f178</ID>
   <ModName>Repairing Priority</ModName>
-  <Version>1.5.3</Version>
+  <Version>1.5.4</Version>
   <SaveBreaking>False</SaveBreaking>
   <Host name="Github">
     <Owner>emipa606</Owner>
@@ -12,3 +12,4 @@
     <Branch>master</Branch>
   </Host>
 </ModSyncNinjaData>
+

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
   <OpenRepairingPriorityDialog>Open repairing priorities window.\n\nHere you can set which areas colonists will repair buildings first, last or anything in between.</OpenRepairingPriorityDialog>
   <AddAreaAsRepairingArea>Click to add an area to prioritize for repairing.\n\nIf you are confused about which areas are prioritized, hover over each area in the list and read the tooltips.</AddAreaAsRepairingArea>

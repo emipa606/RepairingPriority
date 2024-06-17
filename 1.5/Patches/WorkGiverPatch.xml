@@ -1,9 +1,15 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Patch>
   <Operation Class="PatchOperationReplace">
     <xpath>Defs/WorkGiverDef[defName="Repair"]/giverClass</xpath>
     <value>
       <giverClass>RepairingPriority.WorkGiver_RepairPrioritized</giverClass>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/WorkGiverDef[defName="FixBrokenDownBuilding"]/giverClass</xpath>
+    <value>
+      <giverClass>RepairingPriority.WorkGiver_FixBrokenDownBuildingPrioritized</giverClass>
     </value>
   </Operation>
 </Patch>

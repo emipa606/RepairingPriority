@@ -1,5 +1,8 @@
 # Changelog for RepairingPriority
 
+1.5.4 - Should now also work on broken down buildings
+
+
 1.5.3 - Added button to add area at the bottom of the list
 Used DeepL to update translations for ChineseSimplified, French, German
 

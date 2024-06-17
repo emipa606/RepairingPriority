@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
   <OpenRepairingPriorityDialog>打开修理优先级窗口。\n\n在这里，你可以设置殖民者优先修理建筑的区域、最后修理建筑的区域或介于两者之间的区域。</OpenRepairingPriorityDialog>
   <AddAreaAsRepairingArea>如果你对哪些区域内的建筑被优先修理感到困惑，请将鼠标悬停在列表中的区域上并阅读提示。</AddAreaAsRepairingArea>
