@@ -157,8 +157,6 @@ internal class RepairManager_MapComponent : MapComponent, ICellBoolGiver
     public IEnumerable<Thing> RepairableBuildingsInAnyArea()
     {
         var potentialBuildings = map.listerBuildingsRepairable.RepairableBuildings(Faction.OfPlayer);
-
-        Log.Message($"{potentialBuildings.Count} can be repaired");
         var brokenItems = map.GetComponent<BreakdownManager>()?.brokenDownThings;
         if (brokenItems != null && brokenItems.Any())
         {
@@ -167,7 +165,6 @@ internal class RepairManager_MapComponent : MapComponent, ICellBoolGiver
 
         if (potentialBuildings == null || !potentialBuildings.Any())
         {
-            Log.Message($"{potentialBuildings} have no buildings");
             yield break;
         }
 
@@ -186,7 +183,6 @@ internal class RepairManager_MapComponent : MapComponent, ICellBoolGiver
 
             if (CanRepair(building))
             {
-                Log.Message($"Adding {building} to repairable list");
                 yield return building;
             }
         }

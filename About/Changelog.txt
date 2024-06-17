@@ -1,5 +1,8 @@
 # Changelog for RepairingPriority
 
+1.5.5 - Forgot some debug-logging
+
+
 1.5.4 - Should now also work on broken down buildings
 
 
