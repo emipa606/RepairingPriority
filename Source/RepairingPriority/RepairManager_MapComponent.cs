@@ -38,7 +38,7 @@ internal class RepairManager_MapComponent : MapComponent, ICellBoolGiver
                 return prioritizedArea;
             }
 
-            ReacalculatePriorityArea();
+            reacalculatePriorityArea();
             needToUpdatePrioritized = false;
 
             return prioritizedArea;
@@ -95,7 +95,7 @@ internal class RepairManager_MapComponent : MapComponent, ICellBoolGiver
     public override void ExposeData()
     {
         Scribe_Collections.Look(ref priorityList, "RepairingPriority", LookMode.Reference);
-        RemoveNullsInList();
+        removeNullsInList();
         EnsureHasAtLeastOneArea();
     }
 
@@ -181,7 +181,7 @@ internal class RepairManager_MapComponent : MapComponent, ICellBoolGiver
                 continue;
             }
 
-            if (CanRepair(building))
+            if (canRepair(building))
             {
                 yield return building;
             }
@@ -199,7 +199,7 @@ internal class RepairManager_MapComponent : MapComponent, ICellBoolGiver
         priorityAreasDrawer.MarkForDraw();
     }
 
-    private void RemoveNullsInList()
+    private void removeNullsInList()
     {
         priorityList.RemoveAll(x => x == null);
     }
@@ -212,7 +212,7 @@ internal class RepairManager_MapComponent : MapComponent, ICellBoolGiver
         }
     }
 
-    private void ReacalculatePriorityArea()
+    private void reacalculatePriorityArea()
     {
         prioritizedArea = null;
         var potentialBuildings = map.listerBuildingsRepairable.RepairableBuildings(Faction.OfPlayer);
@@ -224,7 +224,7 @@ internal class RepairManager_MapComponent : MapComponent, ICellBoolGiver
         foreach (var area in priorityList)
         {
             if (!potentialBuildings.Any(thing =>
-                    area[thing.Position] && CanRepair(thing)))
+                    area[thing.Position] && canRepair(thing)))
             {
                 continue;
             }
@@ -234,7 +234,7 @@ internal class RepairManager_MapComponent : MapComponent, ICellBoolGiver
         }
     }
 
-    private static bool CanRepair(Thing building)
+    private static bool canRepair(Thing building)
     {
         var breakdownable = building.TryGetComp<CompBreakdownable>();
         if (building.MaxHitPoints <= building.HitPoints && breakdownable is not { BrokenDown: true })

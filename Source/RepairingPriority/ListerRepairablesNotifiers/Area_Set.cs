@@ -4,7 +4,7 @@ using Verse;
 namespace RepairingPriority.ListerRepairablesNotifiers;
 
 [HarmonyPatch(typeof(Area), "Set")]
-internal class AreaChange
+internal class Area_Set
 {
     private static void Postfix(AreaManager ___areaManager)
     {

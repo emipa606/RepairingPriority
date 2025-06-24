@@ -4,7 +4,7 @@ using Verse;
 namespace RepairingPriority.ListerRepairablesNotifiers;
 
 [HarmonyPatch(typeof(Area), nameof(Area.Invert))]
-internal class AreaInverted
+internal class Area_Invert
 {
     private static void Prefix(Area __instance)
     {

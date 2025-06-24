@@ -26,7 +26,7 @@ internal class AreaPriorityPlaySettings
             Find.CurrentMap.GetComponent<RepairManager_MapComponent>().MarkAllForDraw();
         }
 
-        if (!row.ButtonIcon(TextureLoader.priorityWindowButton, "OpenRepairingPriorityDialog".Translate()))
+        if (!row.ButtonIcon(TextureLoader.PriorityWindowButton, "OpenRepairingPriorityDialog".Translate()))
         {
             return;
         }

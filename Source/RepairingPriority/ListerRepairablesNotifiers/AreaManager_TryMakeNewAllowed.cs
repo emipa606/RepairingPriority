@@ -4,7 +4,7 @@ using Verse;
 namespace RepairingPriority.ListerRepairablesNotifiers;
 
 [HarmonyPatch(typeof(AreaManager), nameof(AreaManager.TryMakeNewAllowed))]
-internal class AreaAdded
+internal class AreaManager_TryMakeNewAllowed
 {
     private static void Postfix(Map ___map, bool __result)
     {
