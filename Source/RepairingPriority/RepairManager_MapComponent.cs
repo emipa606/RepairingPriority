@@ -156,7 +156,13 @@ internal class RepairManager_MapComponent : MapComponent, ICellBoolGiver
 
     public IEnumerable<Thing> RepairableBuildingsInAnyArea()
     {
-        var potentialBuildings = map.listerBuildingsRepairable.RepairableBuildings(Faction.OfPlayer);
+        // .ToList() — defensive copy. RepairableBuildings(Faction) returns vanilla's
+        // ListerBuildingsRepairable internal list by reference; both the AddRange below
+        // and re-entrant calls from WorkGiver_RepairPrioritized.HasJobOnThing's
+        // Contains(t) (which restarts this iterator mid-enumeration) would otherwise
+        // mutate the list while ClosestThing_Global is still walking it, throwing
+        // InvalidOperationException: "Collection was modified".
+        var potentialBuildings = map.listerBuildingsRepairable.RepairableBuildings(Faction.OfPlayer).ToList();
         var brokenItems = map.GetComponent<BreakdownManager>()?.brokenDownThings;
         if (brokenItems != null && brokenItems.Any())
         {
