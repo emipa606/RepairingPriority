@@ -10,8 +10,6 @@ internal class RepairManager_MapComponent : MapComponent, ICellBoolGiver
 {
     private readonly CellBoolDrawer priorityAreasDrawer;
 
-    private List<Area> addableAreas = [];
-
     private bool needToUpdateAddables = true;
     private bool needToUpdatePrioritized = true;
 
@@ -53,16 +51,16 @@ internal class RepairManager_MapComponent : MapComponent, ICellBoolGiver
         {
             if (!needToUpdateAddables)
             {
-                return addableAreas;
+                return field;
             }
 
-            addableAreas = map.areaManager.AllAreas.ToList();
-            addableAreas.RemoveAll(x => priorityList.Contains(x));
+            field = map.areaManager.AllAreas.ToList();
+            field.RemoveAll(x => priorityList.Contains(x));
             needToUpdateAddables = false;
 
-            return addableAreas;
+            return field;
         }
-    }
+    } = [];
 
     public Color Color => Color.white;
 
@@ -169,7 +167,7 @@ internal class RepairManager_MapComponent : MapComponent, ICellBoolGiver
             potentialBuildings.AddRange(brokenItems);
         }
 
-        if (potentialBuildings == null || !potentialBuildings.Any())
+        if (!potentialBuildings.Any())
         {
             yield break;
         }

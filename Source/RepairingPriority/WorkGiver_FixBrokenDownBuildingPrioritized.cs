@@ -80,7 +80,7 @@ internal class WorkGiver_FixBrokenDownBuildingPrioritized : WorkGiver_FixBrokenD
         return false;
     }
 
-    private Thing FindClosestComponent(Pawn pawn)
+    private static Thing FindClosestComponent(Pawn pawn)
     {
         return GenClosest.ClosestThingReachable(pawn.Position, pawn.Map,
             ThingRequest.ForDef(ThingDefOf.ComponentIndustrial), PathEndMode.InteractionCell,
